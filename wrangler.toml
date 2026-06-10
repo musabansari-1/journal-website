@@ -1,0 +1,33 @@
+name = "journal-worker"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".next"
+
+# Completely separate from addition-publishing worker
+# Same Cloudflare account — separate resource names
+
+[[d1_databases]]
+binding = "DB"
+database_name = "journal-db"
+database_id = "41a202c9-b4e0-417a-a026-aab293a4a123"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "journal-r2"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "7dc364e2fd484f8baca4a3ef8d8c0db2"
+
+[[queues.producers]]
+binding = "QUEUE"
+queue = "journal-queue"
+
+[[queues.consumers]]
+queue = "journal-queue"
+max_batch_size = 10
+max_batch_timeout = 30
+
+[vars]
+ENVIRONMENT = "production"
+NEXT_PUBLIC_APP_URL = "https://nrityanjaliresearchjournal.com"
