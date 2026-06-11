@@ -1,4 +1,8 @@
+# This file is for deploying the Worker separately
+# Run: wrangler deploy --config wrangler.worker.toml
+
 name = "journal-worker"
+main = "workers/index.ts"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
@@ -18,6 +22,11 @@ id = "YOUR_JOURNAL_KV_NAMESPACE_ID"
 [[queues.producers]]
 binding = "QUEUE"
 queue = "journal-queue"
+
+[[queues.consumers]]
+queue = "journal-queue"
+max_batch_size = 10
+max_batch_timeout = 30
 
 [vars]
 ENVIRONMENT = "production"
