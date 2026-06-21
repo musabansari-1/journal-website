@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Calendar, MapPin, ExternalLink } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 type Conference = { id:string; title:string; description:string; venue:string; date:string; lastDate?:string; registrationUrl?:string; coverUrl?:string }
 
@@ -10,7 +11,7 @@ export default function ConferencePage() {
   const [conferences, setConferences] = useState<Conference[]>([])
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    fetch('/api/conferences').then(r=>r.json()).then((d: unknown)=>{setConferences(d as Conference[]);setLoading(false)}).catch(()=>setLoading(false))
+    fetch(apiUrl('/api/conferences')).then(r=>r.json()).then((d: unknown)=>{setConferences(d as Conference[]);setLoading(false)}).catch(()=>setLoading(false))
   }, [])
   return (
     <><Navbar /><main className="pt-16">

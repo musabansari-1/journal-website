@@ -1,13 +1,14 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { FileText, Users, MessageSquare, CheckCircle, Clock, CreditCard } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 export default function AdminDashboard() {
   const [papers, setPapers] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/api/admin/papers').then(r=>r.json() as Promise<any[]>).then((d: any[])=>{setPapers(d);setLoading(false)}).catch(()=>setLoading(false))
+    fetch(apiUrl('/api/admin/papers')).then(r=>r.json() as Promise<any[]>).then((d: any[])=>{setPapers(d);setLoading(false)}).catch(()=>setLoading(false))
   }, [])
 
   const stats = [

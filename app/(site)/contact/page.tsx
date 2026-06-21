@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Phone, Mail, MapPin, CheckCircle, Loader } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name:'', email:'', phone:'', subject:'', message:'' })
@@ -12,7 +13,7 @@ export default function ContactPage() {
   const handleSubmit = async (e:React.FormEvent) => {
     e.preventDefault(); setLoading(true)
     try {
-      const res = await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(form) })
+      const res = await fetch(apiUrl('/api/contact'), { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(form) })
       if (res.ok) setSuccess(true)
     } catch {}
     setLoading(false)

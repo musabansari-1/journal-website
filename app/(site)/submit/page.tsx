@@ -3,6 +3,7 @@ import { useState, useRef } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Upload, CheckCircle, Loader, FileText } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 const SUBJECTS = [
   'Arts & Humanities','Commerce & Management','Education',
@@ -39,7 +40,7 @@ export default function SubmitPage() {
     Object.entries(form).forEach(([k, v]) => fd.append(k, v))
     fd.append('file', file)
     try {
-      const res = await fetch('/api/papers/submit', { method: 'POST', body: fd })
+      const res = await fetch(apiUrl('/api/papers/submit'), { method: 'POST', body: fd })
       const data = await res.json() as { success: boolean; paperId?: string; error?: string }
       setResult(data)
     } catch {

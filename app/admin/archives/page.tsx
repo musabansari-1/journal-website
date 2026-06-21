@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import { Loader, Upload, FileText } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 type PublishForm = { doi: string; volume: string; issue: string; pageNo: string }
 
@@ -14,7 +15,7 @@ export default function AdminArchivesPage() {
 
   const load = () => {
     setLoading(true)
-    fetch('/api/admin/papers')
+    fetch(apiUrl('/api/admin/papers'))
       .then(r => r.json())
       .then(d => {
         setPapers((d as any[]).filter((p: any) => ['payment_received', 'published'].includes(p.status)))
@@ -36,7 +37,7 @@ export default function AdminArchivesPage() {
     const f = getForm(id)
     Object.entries(f).forEach(([k, v]) => fd.append(k, v))
     if (pdfs[id]) fd.append('pdf', pdfs[id])
-    await fetch(`/api/admin/papers/${id}/publish`, { method: 'POST', body: fd })
+    await fetch(apiUrl(`/api/admin/papers/${id}/publish`), { method: 'POST', body: fd })
     setPublishing(null)
     load()
   }

@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import { Plus, Trash2, Loader, Users, X } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 export default function AdminMembersPage() {
   const [members, setMembers] = useState<any[]>([])
@@ -11,7 +12,7 @@ export default function AdminMembersPage() {
   const [photo, setPhoto] = useState<File|null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
-  const load = () => { setLoading(true); fetch('/api/admin/members').then(r=>r.json()).then((d: unknown)=>{setMembers(d as any[]);setLoading(false)}).catch(()=>setLoading(false)) }
+  const load = () => { setLoading(true); fetch(apiUrl('/api/admin/members')).then(r=>r.json()).then((d: unknown)=>{setMembers(d as any[]);setLoading(false)}).catch(()=>setLoading(false)) }
   useEffect(()=>{ load() },[])
 
   const save = async () => {
@@ -19,13 +20,13 @@ export default function AdminMembersPage() {
     const fd = new FormData()
     Object.entries(form).forEach(([k,v])=>fd.append(k,v))
     if (photo) fd.append('photo', photo)
-    await fetch('/api/admin/members', { method:'POST', body:fd })
+    await fetch(apiUrl('/api/admin/members'), { method:'POST', body:fd })
     setSaving(false); setShowForm(false); load()
   }
 
   const del = async (id:string) => {
     if (!confirm('Delete this member?')) return
-    await fetch(`/api/admin/members/${id}`, { method:'DELETE' })
+    await fetch(apiUrl(`/api/admin/members/${id}`), { method:'DELETE' })
     load()
   }
 

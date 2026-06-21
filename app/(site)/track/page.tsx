@@ -1,9 +1,10 @@
 'use client'
-import { Suspense, useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Search, Loader, FileText, CreditCard } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 const STATUS_LABELS: Record<string, string> = {
   submitted: 'Submitted', under_review: 'Under Review',
@@ -29,7 +30,7 @@ type Paper = {
   paymentStatus?: string; paymentLinkUrl?: string
 }
 
-function TrackPageContent() {
+export default function TrackPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
@@ -49,7 +50,7 @@ function TrackPageContent() {
     setLoading(true)
     setSearched(false)
     try {
-      const res = await fetch('/api/papers/track', {
+      const res = await fetch(apiUrl('/api/papers/track'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email })
@@ -149,13 +150,5 @@ function TrackPageContent() {
       </main>
       <Footer />
     </>
-  )
-}
-
-export default function TrackPage() {
-  return (
-    <Suspense fallback={null}>
-      <TrackPageContent />
-    </Suspense>
   )
 }

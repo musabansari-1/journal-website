@@ -7,6 +7,7 @@ import {
   FileText, Search, CheckCircle, Globe, Award, Clock,
   Users, ArrowRight, Shield, Star, Download, ChevronDown
 } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 type Paper = {
   id: string; title: string; authorName: string; subject: string
@@ -33,12 +34,12 @@ export default function HomePage() {
   const [faqOpen, setFaqOpen] = useState<number | null>(null)
 
   useEffect(() => {
-    fetch('/api/papers/published')
+    fetch(apiUrl('/api/papers/published'))
       .then(r => r.json())
       .then((d: unknown) => setPapers((d as Paper[]).slice(0, 6)))
       .catch(() => {})
 
-    fetch('/api/testimonials')
+    fetch(apiUrl('/api/testimonials'))
       .then(r => r.json())
       .then((d: unknown) => setTestimonials(d as Testimonial[]))
       .catch(() => {})

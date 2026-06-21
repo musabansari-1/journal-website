@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { Search, ChevronDown, FileText, Send, DollarSign, Loader } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 const STATUSES = ['submitted','under_review','revision_required','accepted','payment_pending','payment_received','published','rejected']
 
@@ -41,7 +42,7 @@ export default function AdminPapersPage() {
 
   const load = () => {
     setLoading(true)
-    fetch('/api/admin/papers')
+    fetch(apiUrl('/api/admin/papers'))
       .then(r => r.json())
       .then((d: unknown) => { setPapers(d as Paper[]); setFiltered(d as Paper[]); setLoading(false) })
       .catch(() => setLoading(false))
@@ -61,7 +62,7 @@ export default function AdminPapersPage() {
 
   const updateStatus = async (id: string, status: string) => {
     setUpdating(id)
-    await fetch(`/api/admin/papers/${id}/status`, {
+    await fetch(apiUrl(`/api/admin/papers/${id}/status`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status, reviewerNotes: notes[id], adminNotes: adminNotes[id] })
@@ -73,7 +74,7 @@ export default function AdminPapersPage() {
   const setFee = async (id: string) => {
     const fee = parseFloat(fees[id] || '0')
     if (!fee) { alert('Enter a valid fee amount'); return }
-    await fetch(`/api/admin/papers/${id}/fee`, {
+    await fetch(apiUrl(`/api/admin/papers/${id}/fee`), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fee })
@@ -83,7 +84,7 @@ export default function AdminPapersPage() {
 
   const sendPaymentLink = async (id: string) => {
     setUpdating(id)
-    const res = await fetch(`/api/admin/papers/${id}/send-payment-link`, { method: 'POST' })
+    const res = await fetch(apiUrl(`/api/admin/papers/${id}/send-payment-link`), { method: 'POST' })
     const data = await res.json() as { success: boolean; paymentLink?: string; error?: string }
     setUpdating(null)
     if (data.success) alert(`Payment link sent!\nLink: ${data.paymentLink}`)

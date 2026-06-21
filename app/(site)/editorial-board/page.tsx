@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Users } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 type Member = { id: string; name: string; designation: string; institute: string; country: string; expertise?: string; photoUrl?: string }
 
@@ -11,7 +12,7 @@ export default function BoardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/api/members/editorial')
+    fetch(apiUrl('/api/members/editorial'))
       .then(r => r.json())
       .then((d: unknown) => { setMembers(d as Member[]); setLoading(false) })
       .catch(() => setLoading(false))

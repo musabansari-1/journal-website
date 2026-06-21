@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import { Plus, Trash2, Loader, Calendar, X } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 export default function AdminConferencesPage() {
   const [conferences, setConferences] = useState<any[]>([])
@@ -11,7 +12,7 @@ export default function AdminConferencesPage() {
   const [cover, setCover] = useState<File|null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
-  const load = () => { setLoading(true); fetch('/api/admin/conferences').then(r=>r.json()).then((d: unknown)=>{setConferences(d as any[]);setLoading(false)}).catch(()=>setLoading(false)) }
+  const load = () => { setLoading(true); fetch(apiUrl('/api/admin/conferences')).then(r=>r.json()).then((d: unknown)=>{setConferences(d as any[]);setLoading(false)}).catch(()=>setLoading(false)) }
   useEffect(()=>{ load() },[])
 
   const save = async () => {
@@ -19,13 +20,13 @@ export default function AdminConferencesPage() {
     const fd = new FormData()
     Object.entries(form).forEach(([k,v])=>fd.append(k,v))
     if (cover) fd.append('cover', cover)
-    await fetch('/api/admin/conferences', { method:'POST', body:fd })
+    await fetch(apiUrl('/api/admin/conferences'), { method:'POST', body:fd })
     setSaving(false); setShowForm(false); load()
   }
 
   const del = async (id:string) => {
     if (!confirm('Delete this conference?')) return
-    await fetch(`/api/admin/conferences/${id}`, { method:'DELETE' })
+    await fetch(apiUrl(`/api/admin/conferences/${id}`), { method:'DELETE' })
     load()
   }
 

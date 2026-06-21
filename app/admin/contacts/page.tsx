@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { MessageSquare, ChevronDown, Check, Users } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 export default function AdminContactsPage() {
   const [contacts, setContacts] = useState<any[]>([])
@@ -11,18 +12,18 @@ export default function AdminContactsPage() {
 
   const load = () => {
     setLoading(true)
-    Promise.all([fetch('/api/admin/contacts').then(r=>r.json() as Promise<any[]>), fetch('/api/admin/join-requests').then(r=>r.json() as Promise<any[]>)])
+    Promise.all([fetch(apiUrl('/api/admin/contacts')).then(r=>r.json() as Promise<any[]>), fetch(apiUrl('/api/admin/join-requests')).then(r=>r.json() as Promise<any[]>)])
       .then(([c,j]: [any[], any[]])=>{ setContacts(c); setJoins(j); setLoading(false) }).catch(()=>setLoading(false))
   }
   useEffect(()=>{ load() },[])
 
   const markRead = async (id:string) => {
-    await fetch(`/api/admin/contacts/${id}`, { method:'PUT' })
+    await fetch(apiUrl(`/api/admin/contacts/${id}`), { method:'PUT' })
     setContacts(prev=>prev.map((c:any)=>c.id===id?{...c,isRead:1}:c))
   }
 
   const updateJoinStatus = async (id:string, status:string) => {
-    await fetch(`/api/admin/join-requests/${id}`, { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({status}) })
+    await fetch(apiUrl(`/api/admin/join-requests/${id}`), { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({status}) })
     load()
   }
 

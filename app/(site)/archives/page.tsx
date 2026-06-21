@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { Search, Download, BookOpen } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 const SUBJECTS = [
   'Arts & Humanities','Commerce & Management','Education',
@@ -31,7 +32,7 @@ export default function ArchivesPage() {
   const [expanded, setExpanded] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('/api/papers/published')
+    fetch(apiUrl('/api/papers/published'))
       .then(r => r.json())
       .then((d: unknown) => {
         const list = d as Paper[]

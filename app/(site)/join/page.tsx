@@ -3,6 +3,7 @@ import { useState, useRef } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { CheckCircle, Loader, Upload } from 'lucide-react'
+import { apiUrl } from '@/lib/utils/api'
 
 export default function JoinPage() {
   const [form, setForm] = useState({ name:'', email:'', phone:'', designation:'', institute:'', country:'India', expertise:'', experience:'', type:'reviewer' })
@@ -18,7 +19,7 @@ export default function JoinPage() {
     Object.entries(form).forEach(([k,v])=>fd.append(k,v))
     if (cv) fd.append('cv', cv)
     try {
-      const res = await fetch('/api/join', { method:'POST', body:fd })
+      const res = await fetch(apiUrl('/api/join'), { method:'POST', body:fd })
       if (res.ok) setSuccess(true)
     } catch {}
     setLoading(false)
