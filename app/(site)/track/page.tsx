@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -30,20 +30,24 @@ type Paper = {
   paymentStatus?: string; paymentLinkUrl?: string
 }
 
+// Reads ?name= and ?email= from the URL (e.g. homepage mini-form links here).
+// useSearchParams() requires a Suspense boundary in Next.js 15 static export,
+// so this lookup is isolated into its own tiny component below.
+function PrefillFromQuery({ onPrefill }: { onPrefill: (name: string, email: string) => void }) {
+  const searchParams = useSearchParams()
+  const n = searchParams.get('name') || ''
+  const e = searchParams.get('email') || ''
+  // Run once on mount with whatever the URL had at load time.
+  useState(() => { if (n || e) onPrefill(n, e); return null })
+  return null
+}
+
 export default function TrackPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [papers, setPapers] = useState<Paper[] | null>(null)
   const [searched, setSearched] = useState(false)
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const n = searchParams.get('name')
-    const e = searchParams.get('email')
-    if (n) setName(n)
-    if (e) setEmail(e)
-  }, [searchParams])
 
   const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -65,6 +69,9 @@ export default function TrackPage() {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <PrefillFromQuery onPrefill={(n, e) => { if (n) setName(n); if (e) setEmail(e) }} />
+      </Suspense>
       <Navbar />
       <main className="pt-16 min-h-screen bg-brand-50">
         <div className="bg-gradient-to-br from-brand-900 to-brand-800 py-16 text-center">
