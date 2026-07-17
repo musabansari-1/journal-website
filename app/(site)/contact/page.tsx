@@ -30,7 +30,7 @@ export default function ContactPage() {
           <div>
             <h2 className="font-display text-2xl font-bold text-brand-900 mb-6">Get in Touch</h2>
             {[{icon:Phone,label:'Phone',value:'+91-9557475906',href:'tel:+919557475906'},
-              {icon:Mail,label:'Email',value:'info@nrityanjaliresearchjournal.com',href:'mailto:info@nrityanjaliresearchjournal.com'},
+              {icon:Mail,label:'Email',value:'info@Elsevierresearchjournal.com',href:'mailto:info@Elsevierresearchjournal.com'},
               {icon:MapPin,label:'Address',value:'Rampur, Uttar Pradesh 244924, India',href:null},
             ].map(item=>(
               <div key={item.label} className="flex items-start gap-4 mb-5">
@@ -69,3 +69,4 @@ export default function ContactPage() {
     </main><Footer /></>
   )
 }
+

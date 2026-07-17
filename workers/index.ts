@@ -1,5 +1,5 @@
 /**
- * NRITYANJALI JOURNAL — Cloudflare Worker
+ * Elsevier Journal — Cloudflare Worker
  *
  * CPU Budget per request (free tier = 10ms limit):
  * - KV reads: ~0.5ms (checked first, avoids D1)
@@ -293,7 +293,7 @@ export default {
           paperId: id, paperTitle: paper.title,
           authorName: paper.authorName, email: paper.email,
           phone: paper.phone, amount: paper.publicationFee,
-          callbackUrl: `${env.ENVIRONMENT === 'production' ? 'https://nrityanjaliresearchjournal.com' : 'http://localhost:3000'}/payment/success`
+          callbackUrl: `${env.ENVIRONMENT === 'production' ? 'https://Elsevierresearchjournal.com' : 'http://localhost:3000'}/payment/success`
         })
 
         await setPaymentLink(db, id, link.id, link.short_url)
@@ -466,7 +466,7 @@ export default {
           const { subject, html } = submissionConfirmationEmail({ authorName: d.authorName, paperId: d.paperId, title: d.title })
           await sendEmail(env, d.email, subject, html)
           const { subject: as, html: ah } = adminNewSubmissionEmail({ paperId: d.paperId, title: d.title, authorName: d.authorName, email: d.email, subject: d.subject })
-          await sendEmail(env, 'info@nrityanjaliresearchjournal.com', as, ah)
+          await sendEmail(env, 'info@Elsevierresearchjournal.com', as, ah)
           msg.ack()
         } else if (d.type === 'status_update') {
           const { subject, html } = statusUpdateEmail({ authorName: d.authorName, paperId: d.paperId, title: d.title, status: d.status, reviewerNotes: d.reviewerNotes, paymentLink: d.paymentLink })
@@ -474,11 +474,11 @@ export default {
           msg.ack()
         } else if (d.type === 'contact_notification') {
           const { subject, html } = contactNotificationEmail(d)
-          await sendEmail(env, 'info@nrityanjaliresearchjournal.com', subject, html)
+          await sendEmail(env, 'info@Elsevierresearchjournal.com', subject, html)
           msg.ack()
         } else if (d.type === 'join_request') {
           const { subject, html } = joinRequestEmail(d)
-          await sendEmail(env, 'info@nrityanjaliresearchjournal.com', subject, html)
+          await sendEmail(env, 'info@Elsevierresearchjournal.com', subject, html)
           msg.ack()
         } else {
           msg.ack()
@@ -490,3 +490,4 @@ export default {
     }
   }
 }
+

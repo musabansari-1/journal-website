@@ -5,19 +5,18 @@ export default function Footer() {
   return (
     <footer className="bg-brand-900 text-white">
       <div className="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand */}
         <div className="lg:col-span-1">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center">
               <BookOpen size={18} className="text-white" />
             </div>
             <div>
-              <div className="font-display font-bold">Nrityanjali</div>
+              <div className="font-display font-bold">Elsevier</div>
               <div className="font-sans text-xs text-brand-300">Research Journal</div>
             </div>
           </div>
           <p className="font-sans text-xs text-brand-200 leading-relaxed mb-4">
-            E-ISSN: 3108-1452 | Multidisciplinary peer-reviewed open access journal published by Nrityanjali India (OPC) Private Limited.
+            E-ISSN: 3108-1452 | Multidisciplinary peer-reviewed open access journal published by Elsevier India (OPC) Private Limited.
           </p>
           <div className="flex gap-3">
             {[
@@ -33,7 +32,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h4 className="font-sans font-semibold mb-4 text-brand-300 text-sm">Quick Links</h4>
           <ul className="space-y-2">
@@ -53,7 +51,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* For Authors */}
         <div>
           <h4 className="font-sans font-semibold mb-4 text-brand-300 text-sm">For Authors</h4>
           <ul className="space-y-2">
@@ -73,7 +70,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
         <div>
           <h4 className="font-sans font-semibold mb-4 text-brand-300 text-sm">Contact Us</h4>
           <ul className="space-y-3">
@@ -92,8 +88,8 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail size={13} className="text-brand-400 shrink-0" />
-              <a href="mailto:info@nrityanjaliresearchjournal.com" className="font-sans text-xs text-brand-200 hover:text-white transition-colors break-all">
-                info@nrityanjaliresearchjournal.com
+              <a href="mailto:info@elsevierresearchjournal.com" className="font-sans text-xs text-brand-200 hover:text-white transition-colors break-all">
+                info@elsevierresearchjournal.com
               </a>
             </li>
           </ul>
@@ -103,10 +99,10 @@ export default function Footer() {
       <div className="border-t border-brand-800 py-5">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-sans text-xs text-brand-400">
-            © {new Date().getFullYear()} Nrityanjali India (OPC) Private Limited. All rights reserved.
+            (c) {new Date().getFullYear()} Elsevier India (OPC) Private Limited. All rights reserved.
           </p>
           <p className="font-sans text-xs text-brand-500">
-            www.nrityanjaliresearchjournal.com
+            www.elsevierresearchjournal.com
           </p>
         </div>
       </div>

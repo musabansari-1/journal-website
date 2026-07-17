@@ -94,7 +94,7 @@ export default function HomePage() {
                   Welcome To
                 </h1>
                 <h2 className="font-display text-2xl lg:text-3xl font-semibold text-brand-300 leading-tight mb-6">
-                  Nrityanjali Multidisciplinary International Research Journal
+                  Elsevier Multidisciplinary International Research Journal
                 </h2>
                 <p className="font-body text-lg text-brand-200 leading-relaxed mb-8 max-w-xl">
                   Join a trusted platform for publishing original research papers, review articles, and case studies. We support authors with quick peer review, expert editorial feedback, and global visibility.
@@ -160,10 +160,10 @@ export default function HomePage() {
               <div>
                 <span className="font-sans text-sm font-semibold text-brand-600 tracking-widest uppercase">About Us</span>
                 <h2 className="font-display text-4xl font-bold text-brand-900 mt-3 mb-6">
-                  Nrityanjali Multidisciplinary International Research Journal
+                  Elsevier Multidisciplinary International Research Journal
                 </h2>
                 <p className="font-body text-gray-700 leading-relaxed mb-4">
-                  At <strong>Nrityanjali Multidisciplinary International Research Journal</strong>, we are dedicated to promoting high-quality, peer-reviewed research across multiple disciplines. Our mission is to create a platform where scholars, educators, and researchers can share their innovations and findings with a global academic community.
+                  At <strong>Elsevier Multidisciplinary International Research Journal</strong>, we are dedicated to promoting high-quality, peer-reviewed research across multiple disciplines. Our mission is to create a platform where scholars, educators, and researchers can share their innovations and findings with a global academic community.
                 </p>
                 <p className="font-body text-gray-700 leading-relaxed mb-6">
                   Our journal ensures ethical publishing, fast peer review, and wide visibility to help authors gain academic recognition and inspire future research.
@@ -273,7 +273,7 @@ export default function HomePage() {
         <section className="py-20 bg-brand-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="font-display text-4xl font-bold text-brand-900">Why Choose Nrityanjali?</h2>
+              <h2 className="font-display text-4xl font-bold text-brand-900">Why Choose Elsevier?</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {features.map(f => (
@@ -360,7 +360,7 @@ export default function HomePage() {
                 <span className="font-sans text-sm font-semibold text-brand-600 tracking-widest uppercase">Testimonial</span>
                 <h2 className="font-display text-4xl font-bold text-brand-900 mt-3">What Our Authors Say</h2>
                 <p className="font-body text-gray-600 mt-3 max-w-2xl mx-auto">
-                  Researchers across disciplines trust Nrityanjali Journal for its fast, fair, and reliable publication process.
+                  Researchers across disciplines trust Elsevier Journal for its fast, fair, and reliable publication process.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -465,3 +465,4 @@ function TrackMiniForm() {
     </div>
   )
 }
+

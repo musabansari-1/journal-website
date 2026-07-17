@@ -60,7 +60,7 @@ export default function ArchivesPage() {
       <main className="pt-16 min-h-screen bg-brand-50">
         <div className="bg-gradient-to-br from-brand-900 to-brand-800 py-16 text-center">
           <h1 className="font-display text-4xl font-bold text-white mb-3">Published Archives</h1>
-          <p className="font-body text-brand-200">{papers.length} papers published in Nrityanjali Journal</p>
+          <p className="font-body text-brand-200">{papers.length} papers published in Elsevier Journal</p>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 py-10">
@@ -145,3 +145,4 @@ export default function ArchivesPage() {
     </>
   )
 }
+

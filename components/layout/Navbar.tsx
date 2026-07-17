@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             <a href="tel:+919557475906" className="hover:text-white transition-colors">+91-9557475906</a>
             <a href="tel:+919568175906" className="hover:text-white transition-colors">+91-9568175906</a>
-            <a href="mailto:info@nrityanjaliresearchjournal.com" className="hover:text-white transition-colors">info@nrityanjaliresearchjournal.com</a>
+            <a href="mailto:info@Elsevierresearchjournal.com" className="hover:text-white transition-colors">info@Elsevierresearchjournal.com</a>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
                 <BookOpen size={18} className="text-white" />
               </div>
               <div className="hidden sm:block">
-                <div className="font-display font-bold text-brand-900 text-sm leading-tight">Nrityanjali</div>
+                <div className="font-display font-bold text-brand-900 text-sm leading-tight">Elsevier</div>
                 <div className="font-sans text-xs text-brand-600 leading-tight">Research Journal</div>
               </div>
             </Link>
@@ -191,3 +191,4 @@ export default function Navbar() {
     </>
   )
 }
+

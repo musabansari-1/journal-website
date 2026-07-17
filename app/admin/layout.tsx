@@ -21,7 +21,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="p-5 border-b border-brand-800">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center"><BookOpen size={16} className="text-white"/></div>
-            <div><div className="font-display text-sm font-bold text-white">Nrityanjali</div><div className="font-sans text-xs text-brand-400">Admin Panel</div></div>
+            <div><div className="font-display text-sm font-bold text-white">Elsevier</div><div className="font-sans text-xs text-brand-400">Admin Panel</div></div>
           </div>
         </div>
         <nav className="p-3 space-y-0.5">
@@ -52,3 +52,4 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     </div>
   )
 }
+
