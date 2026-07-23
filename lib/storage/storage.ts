@@ -10,7 +10,7 @@ export type StorageEnv = { R2: R2Bucket }
 
 export async function uploadFile(env: StorageEnv, key: string, buffer: ArrayBuffer, contentType: string): Promise<string> {
   await env.R2.put(key, buffer, { httpMetadata: { contentType } })
-  return `https://pub-YOUR_JOURNAL_R2_HASH.r2.dev/${key}`
+  return `https://pub-d507e624d4404678af99d136f87ae4c3.r2.dev/${key}`
 }
 
 export async function deleteFile(env: StorageEnv, key: string): Promise<void> {
