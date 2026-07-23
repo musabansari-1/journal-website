@@ -75,7 +75,14 @@ export default {
 
       // POST submit paper
       if (path === '/api/papers/submit' && method === 'POST') {
+        const submitStartedAt = performance.now()
+        const mark = (label: string) => {
+          console.log(`[submit] ${label} +${Math.round(performance.now() - submitStartedAt)}ms`)
+        }
+
+        mark('request received')
         const formData = await request.formData()
+        mark('form data parsed')
         const title = formData.get('title') as string
         const abstract = formData.get('abstract') as string
         const keywords = formData.get('keywords') as string
@@ -101,17 +108,24 @@ export default {
           const validation = validateFile(file.type, file.size, 'document')
           if (!validation.valid) return err(validation.error!)
           fileKey = generateStorageKey('papers', file.name)
+          mark('file validated')
           const buffer = await file.arrayBuffer()
+          mark('file buffered')
           fileUrl = await uploadFile(env, fileKey, buffer, file.type)
+          mark('file uploaded')
           fileName = file.name
         }
 
         const id = await generatePaperId(db)
+        mark('paper id generated')
         await createPaper(db, { id, title, abstract, keywords, subject, authorName, coAuthors, designation, institute, email, phone, country, fileUrl, fileKey, fileName })
+        mark('paper saved')
 
         // Queue emails — 0ms CPU here
         await env.QUEUE.send({ type: 'submission_confirmation', paperId: id, title, authorName, email, subject })
+        mark('queue message sent')
 
+        mark('response ready')
         return json({ success: true, paperId: id })
       }
 

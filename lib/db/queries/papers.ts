@@ -95,7 +95,6 @@ export async function publishPaper(db: Database, id: string, data: {
 
 export async function generatePaperId(db: Database): Promise<string> {
   const year = new Date().getFullYear()
-  const result = await db.select({ count: sql<number>`count(*)` }).from(papers)
-  const num = String((Number(result[0]?.count) || 0) + 1).padStart(3, '0')
-  return `NRJ-${year}-${num}`
+  const suffix = `${Date.now().toString().slice(-6)}-${Math.random().toString(36).substring(2, 5).toUpperCase()}`
+  return `NRJ-${year}-${suffix}`
 }
