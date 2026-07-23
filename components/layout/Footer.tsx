@@ -76,20 +76,19 @@ export default function Footer() {
             <li className="flex items-start gap-2">
               <MapPin size={13} className="text-brand-400 mt-0.5 shrink-0" />
               <span className="font-sans text-xs text-brand-200 leading-relaxed">
-                102 k Meerapur Meerganj, Tehsil Suar, District Rampur, Uttar Pradesh 244924
+                HOUSE No. B-168 S/F - 1, CHHATTARPUR PAHARI, SAWAN PUBLIC SCHOOL, SOUTH WEST DELHI -110074
               </span>
             </li>
             <li className="flex items-center gap-2">
               <Phone size={13} className="text-brand-400 shrink-0" />
               <div className="flex flex-col gap-1">
-                <a href="tel:+919557475906" className="font-sans text-xs text-brand-200 hover:text-white transition-colors">+91-9557475906</a>
-                <a href="tel:+919568175906" className="font-sans text-xs text-brand-200 hover:text-white transition-colors">+91-9568175906</a>
+                <a href="tel:+917302342998" className="font-sans text-xs text-brand-200 hover:text-white transition-colors">+91-7302342998</a>
               </div>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={13} className="text-brand-400 shrink-0" />
-              <a href="mailto:info@elsevierresearchjournal.com" className="font-sans text-xs text-brand-200 hover:text-white transition-colors break-all">
-                info@elsevierresearchjournal.com
+              <a href="mailto:elsevierinternationalgroup@gmail.com" className="font-sans text-xs text-brand-200 hover:text-white transition-colors break-all">
+                elsevierinternationalgroup@gmail.com
               </a>
             </li>
           </ul>

@@ -112,8 +112,8 @@ export default function HomePage() {
                   <Link href="/submit" className="flex items-center gap-2 font-sans font-semibold bg-white text-brand-800 px-8 py-4 rounded-full hover:bg-brand-50 transition-all shadow-lg group">
                     Get Started <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <a href="tel:+919557475906" className="flex items-center gap-2 font-sans font-semibold border border-brand-400 text-white px-8 py-4 rounded-full hover:bg-brand-700 transition-all">
-                    Call Us +91-9557475906
+                  <a href="tel:+917302342998" className="flex items-center gap-2 font-sans font-semibold border border-brand-400 text-white px-8 py-4 rounded-full hover:bg-brand-700 transition-all">
+                    Call Us +91-7302342998
                   </a>
                 </div>
               </div>

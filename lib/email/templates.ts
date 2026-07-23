@@ -1,6 +1,6 @@
 const B = '#1e40af'
 const BL = '#dbeafe'
-const footer = `<div style="border-top:1px solid #e2e8f0;padding-top:16px;margin-top:24px;color:#888;font-size:12px;"><p>Elsevier India (OPC) Pvt Ltd | Rampur, UP 244924 | +91-9557475906</p></div>`
+const footer = `<div style="border-top:1px solid #e2e8f0;padding-top:16px;margin-top:24px;color:#888;font-size:12px;"><p>Elsevier India (OPC) Pvt Ltd | HOUSE No. B-168 S/F - 1, CHHATTARPUR PAHARI, SAWAN PUBLIC SCHOOL, SOUTH WEST DELHI -110074 | +91-7302342998 | elsevierinternationalgroup@gmail.com</p></div>`
 const wrap = (c: string) => `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;padding:32px 20px;color:#1a1a2e;"><div style="border-bottom:3px solid ${B};padding-bottom:16px;margin-bottom:24px;"><h2 style="color:${B};margin:0;font-size:20px;">Elsevier Multidisciplinary International Research Journal</h2><p style="color:#666;margin:4px 0 0;font-size:12px;">E-ISSN: 3108-1452</p></div>${c}${footer}</div>`
 
 export function submissionConfirmationEmail(d: { authorName: string; paperId: string; title: string }) {
@@ -22,7 +22,7 @@ export function statusUpdateEmail(d: { authorName: string; paperId: string; titl
 }
 
 export function adminNewSubmissionEmail(d: { paperId: string; title: string; authorName: string; email: string; subject: string }) {
-  return { subject: `New Submission — ${d.paperId}`, html: wrap(`<h3>New Paper Submitted</h3><p><strong>ID:</strong> ${d.paperId}</p><p><strong>Title:</strong> ${d.title}</p><p><strong>Author:</strong> ${d.authorName} (${d.email})</p><p><strong>Subject:</strong> ${d.subject}</p><p><a href="https://Elsevierresearchjournal.com/admin/papers" style="color:${B};">Review in Admin →</a></p>`) }
+  return { subject: `New Submission — ${d.paperId}`, html: wrap(`<h3>New Paper Submitted</h3><p><strong>ID:</strong> ${d.paperId}</p><p><strong>Title:</strong> ${d.title}</p><p><strong>Author:</strong> ${d.authorName} (${d.email})</p><p><strong>Subject:</strong> ${d.subject}</p><p><a href="https://elsevierresearchjournal.com/admin/papers" style="color:${B};">Review in Admin →</a></p>`) }
 }
 
 export function contactNotificationEmail(d: { name: string; email: string; phone?: string; subject: string; message: string }) {
@@ -30,6 +30,7 @@ export function contactNotificationEmail(d: { name: string; email: string; phone
 }
 
 export function joinRequestEmail(d: { name: string; type: string; designation: string; institute: string; expertise: string }) {
-  return { subject: `New ${d.type} Application — ${d.name}`, html: wrap(`<h3>New ${d.type === 'editor' ? 'Editor' : 'Reviewer'} Application</h3><p><strong>Name:</strong> ${d.name}</p><p><strong>Designation:</strong> ${d.designation}</p><p><strong>Institute:</strong> ${d.institute}</p><p><strong>Expertise:</strong> ${d.expertise}</p><p><a href="https://Elsevierresearchjournal.com/admin/contacts" style="color:${B};">View in Admin →</a></p>`) }
+  return { subject: `New ${d.type} Application — ${d.name}`, html: wrap(`<h3>New ${d.type === 'editor' ? 'Editor' : 'Reviewer'} Application</h3><p><strong>Name:</strong> ${d.name}</p><p><strong>Designation:</strong> ${d.designation}</p><p><strong>Institute:</strong> ${d.institute}</p><p><strong>Expertise:</strong> ${d.expertise}</p><p><a href="https://elsevierresearchjournal.com/admin/contacts" style="color:${B};">View in Admin →</a></p>`) }
 }
+
 

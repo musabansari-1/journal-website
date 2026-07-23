@@ -29,9 +29,9 @@ export default function ContactPage() {
         <div className="space-y-8">
           <div>
             <h2 className="font-display text-2xl font-bold text-brand-900 mb-6">Get in Touch</h2>
-            {[{icon:Phone,label:'Phone',value:'+91-9557475906',href:'tel:+919557475906'},
-              {icon:Mail,label:'Email',value:'info@Elsevierresearchjournal.com',href:'mailto:info@Elsevierresearchjournal.com'},
-              {icon:MapPin,label:'Address',value:'Rampur, Uttar Pradesh 244924, India',href:null},
+            {[{icon:Phone,label:'Phone',value:'+91-7302342998',href:'tel:+917302342998'},
+              {icon:Mail,label:'Email',value:'elsevierinternationalgroup@gmail.com',href:'mailto:elsevierinternationalgroup@gmail.com'},
+              {icon:MapPin,label:'Address',value:'HOUSE No. B-168 S/F - 1, CHHATTARPUR PAHARI, SAWAN PUBLIC SCHOOL, SOUTH WEST DELHI -110074',href:null},
             ].map(item=>(
               <div key={item.label} className="flex items-start gap-4 mb-5">
                 <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center shrink-0"><item.icon size={18} className="text-brand-700"/></div>

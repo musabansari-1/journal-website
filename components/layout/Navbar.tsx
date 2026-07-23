@@ -52,9 +52,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           <span>E-ISSN NO. - 3108-1452</span>
           <div className="flex items-center gap-6">
-            <a href="tel:+919557475906" className="hover:text-white transition-colors">+91-9557475906</a>
-            <a href="tel:+919568175906" className="hover:text-white transition-colors">+91-9568175906</a>
-            <a href="mailto:info@Elsevierresearchjournal.com" className="hover:text-white transition-colors">info@Elsevierresearchjournal.com</a>
+            <a href="tel:+917302342998" className="hover:text-white transition-colors">+91-7302342998</a>
+            <a href="mailto:elsevierinternationalgroup@gmail.com" className="hover:text-white transition-colors">elsevierinternationalgroup@gmail.com</a>
           </div>
         </div>
       </div>
