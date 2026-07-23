@@ -21,6 +21,19 @@ export async function createPaper(db: Database, data: {
   } as any)
 }
 
+export async function updatePaperFile(db: Database, id: string, data: {
+  fileUrl: string
+  fileKey: string
+  fileName: string
+}) {
+  return db.update(papers).set({
+    fileUrl: data.fileUrl,
+    fileKey: data.fileKey,
+    fileName: data.fileName,
+    updatedAt: Date.now(),
+  } as any).where(eq(papers.id, id))
+}
+
 export async function getPaperById(db: Database, id: string) {
   const result = await db.select().from(papers).where(eq(papers.id, id)).limit(1)
   return result[0] || null

@@ -36,15 +36,21 @@ export default function SubmitPage() {
     e.preventDefault()
     if (!file) { alert('Please upload your paper file'); return }
     setLoading(true)
-    const fd = new FormData()
-    Object.entries(form).forEach(([k, v]) => fd.append(k, v))
-    fd.append('file', file)
+    setResult(null)
     try {
+      const fd = new FormData()
+      Object.entries(form).forEach(([k, v]) => fd.append(k, v))
+      fd.append('file', file)
       const res = await fetch(apiUrl('/api/papers/submit'), { method: 'POST', body: fd })
       const data = await res.json() as { success: boolean; paperId?: string; error?: string }
-      setResult(data)
-    } catch {
-      setResult({ success: false, error: 'Submission failed. Please try again.' })
+      if (!res.ok || !data.success || !data.paperId) {
+        throw new Error(data.error || 'Submission failed. Please try again.')
+      }
+
+      setResult({ success: true, paperId: data.paperId })
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Submission failed. Please try again.'
+      setResult({ success: false, error: message })
     }
     setLoading(false)
   }

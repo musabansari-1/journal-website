@@ -100,28 +100,23 @@ export default {
           return err('Missing required fields')
         }
 
-        let fileUrl: string | undefined
-        let fileKey: string | undefined
-        let fileName: string | undefined
+        if (!file || file.size === 0) return err('Paper file required')
 
-        if (file && file.size > 0) {
-          const validation = validateFile(file.type, file.size, 'document')
-          if (!validation.valid) return err(validation.error!)
-          fileKey = generateStorageKey('papers', file.name)
-          mark('file validated')
-          const buffer = await file.arrayBuffer()
-          mark('file buffered')
-          fileUrl = await uploadFile(env, fileKey, buffer, file.type)
-          mark('file uploaded')
-          fileName = file.name
-        }
+        const validation = validateFile(file.type, file.size, 'document')
+        if (!validation.valid) return err(validation.error!)
+
+        const fileKey = generateStorageKey('papers', file.name)
+        mark('file validated')
+        const buffer = await file.arrayBuffer()
+        mark('file buffered')
+        const fileUrl = await uploadFile(env, fileKey, buffer, file.type)
+        mark('file uploaded')
 
         const id = await generatePaperId(db)
         mark('paper id generated')
-        await createPaper(db, { id, title, abstract, keywords, subject, authorName, coAuthors, designation, institute, email, phone, country, fileUrl, fileKey, fileName })
+        await createPaper(db, { id, title, abstract, keywords, subject, authorName, coAuthors, designation, institute, email, phone, country, fileUrl, fileKey, fileName: file.name })
         mark('paper saved')
 
-        // Queue emails — 0ms CPU here
         await env.QUEUE.send({ type: 'submission_confirmation', paperId: id, title, authorName, email, subject })
         mark('queue message sent')
 
