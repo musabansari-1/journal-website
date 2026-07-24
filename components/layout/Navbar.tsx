@@ -50,7 +50,7 @@ export default function Navbar() {
       {/* Top bar */}
       <div className="bg-brand-900 text-brand-200 text-xs font-sans py-1.5 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <span>E-ISSN NO. - 3108-1452</span>
+          <span />
           <div className="flex items-center gap-6">
             <a href="tel:+917302342998" className="hover:text-white transition-colors">+91-7302342998</a>
             <a href="mailto:elsevierinternationalgroup@gmail.com" className="hover:text-white transition-colors">elsevierinternationalgroup@gmail.com</a>

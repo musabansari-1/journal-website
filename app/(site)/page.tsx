@@ -88,7 +88,7 @@ export default function HomePage() {
               <div>
                 <div className="inline-flex items-center gap-2 bg-brand-700/40 border border-brand-500/30 rounded-full px-4 py-2 mb-8">
                   <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  <span className="font-sans text-sm text-brand-200">E-ISSN NO. 3108-1452 | Open Access Journal</span>
+                  <span className="font-sans text-sm text-brand-200">Open Access Journal</span>
                 </div>
                 <h1 className="font-display text-4xl lg:text-6xl font-bold text-white leading-tight mb-4">
                   Welcome To

@@ -1,7 +1,9 @@
 const B = '#1e40af'
 const BL = '#dbeafe'
+import { E_ISSN_PLACEHOLDER } from '../constants/journal'
+
 const footer = `<div style="border-top:1px solid #e2e8f0;padding-top:16px;margin-top:24px;color:#888;font-size:12px;"><p>Elsevier India (OPC) Pvt Ltd | HOUSE No. B-168 S/F - 1, CHHATTARPUR PAHARI, SAWAN PUBLIC SCHOOL, SOUTH WEST DELHI -110074 | +91-7302342998 | elsevierinternationalgroup@gmail.com</p></div>`
-const wrap = (c: string) => `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;padding:32px 20px;color:#1a1a2e;"><div style="border-bottom:3px solid ${B};padding-bottom:16px;margin-bottom:24px;"><h2 style="color:${B};margin:0;font-size:20px;">Elsevier Multidisciplinary International Research Journal</h2><p style="color:#666;margin:4px 0 0;font-size:12px;">E-ISSN: 3108-1452</p></div>${c}${footer}</div>`
+const wrap = (c: string) => `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;padding:32px 20px;color:#1a1a2e;"><div style="border-bottom:3px solid ${B};padding-bottom:16px;margin-bottom:24px;"><h2 style="color:${B};margin:0;font-size:20px;">Elsevier Multidisciplinary International Research Journal</h2>${E_ISSN_PLACEHOLDER ? `<p style="color:#666;margin:4px 0 0;font-size:12px;">E-ISSN: ${E_ISSN_PLACEHOLDER}</p>` : ''}</div>${c}${footer}</div>`
 
 export function submissionConfirmationEmail(d: { authorName: string; paperId: string; title: string }) {
   return { subject: `Submission Confirmed — ${d.paperId}`, html: wrap(`<h3>Submission Received</h3><p>Dear ${d.authorName},</p><p>Your paper has been submitted successfully.</p><div style="background:${BL};border-left:4px solid ${B};padding:14px;margin:16px 0;border-radius:4px;"><p style="margin:0 0 6px"><strong>Paper ID:</strong> <span style="font-family:monospace;color:${B};">${d.paperId}</span></p><p style="margin:0 0 6px"><strong>Title:</strong> ${d.title}</p><p style="margin:0"><strong>Status:</strong> Under Review</p></div><p>Save your Paper ID to track status. We review within <strong>2–5 working days</strong>.</p>`) }

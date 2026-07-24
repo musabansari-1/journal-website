@@ -16,7 +16,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="font-sans text-xs text-brand-200 leading-relaxed mb-4">
-            E-ISSN: 3108-1452 | Multidisciplinary peer-reviewed open access journal published by Elsevier India (OPC) Private Limited.
+            Multidisciplinary peer-reviewed open access journal published by Elsevier India (OPC) Private Limited.
           </p>
           <div className="flex gap-3">
             {[
