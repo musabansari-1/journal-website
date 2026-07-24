@@ -37,6 +37,7 @@ export interface Env {
   RAZORPAY_KEY_SECRET: string
   RAZORPAY_WEBHOOK_SECRET: string
   RESEND_API_KEY: string
+  RESEND_FROM_EMAIL: string
   ENVIRONMENT: string
 }
 
