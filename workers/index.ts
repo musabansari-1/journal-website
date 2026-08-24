@@ -38,6 +38,7 @@ export interface Env {
   RAZORPAY_WEBHOOK_SECRET: string
   RESEND_API_KEY: string
   RESEND_FROM_EMAIL: string
+  ADMIN_PASSWORD: string
   ENVIRONMENT: string
 }
 
@@ -255,6 +256,21 @@ export default {
           }
         }
         return json({ success: true })
+      }
+
+      // ═══════════════════════════════════════
+      // ADMIN — Password Gate
+      // ═══════════════════════════════════════
+
+      if (path === '/api/admin/auth' && method === 'POST') {
+        const body = await request.json() as { password: string }
+        const adminPassword = env.ADMIN_PASSWORD || 'elsevier2024'
+        if (body.password === adminPassword) {
+          // Simple token — in production use JWT or Cloudflare Access
+          const token = btoa(`admin:${Date.now()}:${Math.random().toString(36)}`)
+          return json({ success: true, token })
+        }
+        return err('Invalid password', 401)
       }
 
       // ═══════════════════════════════════════

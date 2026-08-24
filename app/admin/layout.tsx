@@ -1,12 +1,27 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { FileText, Users, Archive, Calendar, MessageSquare, LayoutDashboard, BookOpen, LogOut } from 'lucide-react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
+  const [authorized, setAuthorized] = useState(false)
   const path = usePathname()
+  const router = useRouter()
+
+  useEffect(() => {
+    // Skip auth check on login page
+    if (path === '/admin/login') { setAuthorized(true); return }
+    const token = document.cookie.split('; ').find(c => c.startsWith('admin_token='))?.split('=')[1]
+    if (!token) {
+      router.push('/admin/login')
+    } else {
+      setAuthorized(true)
+    }
+  }, [path, router])
+
+  if (!authorized && path !== '/admin/login') return <div className="min-h-screen bg-gray-50" />
   const nav = [
     { href:'/admin', label:'Dashboard', icon:LayoutDashboard },
     { href:'/admin/papers', label:'Papers', icon:FileText },

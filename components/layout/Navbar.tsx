@@ -24,14 +24,7 @@ export default function Navbar() {
     { label: 'Submit Papers', href: '/submit' },
     { label: 'Track Paper', href: '/track' },
     { label: 'Archives', href: '/archives' },
-    {
-      label: 'Board Committee', href: '#',
-      children: [
-        { label: 'Editorial Board', href: '/editorial-board' },
-        { label: 'Advisory Board', href: '/advisory-board' },
-        { label: 'Reviewer Committee', href: '/reviewer-committee' },
-      ]
-    },
+    { label: 'Board Committee', href: '/editorial-board' },
     {
       label: 'Contact', href: '/contact',
       children: [

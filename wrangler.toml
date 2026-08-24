@@ -1,6 +1,10 @@
 name = "journal-worker"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".next"
+
+# Completely separate from addition-publishing worker
+# Same Cloudflare account — separate resource names
 
 [[d1_databases]]
 binding = "DB"
@@ -19,6 +23,13 @@ id = "YOUR_JOURNAL_KV_NAMESPACE_ID"
 binding = "QUEUE"
 queue = "journal-queue"
 
+[[queues.consumers]]
+queue = "journal-queue"
+max_batch_size = 10
+max_batch_timeout = 30
+
 [vars]
 ENVIRONMENT = "production"
-NEXT_PUBLIC_APP_URL = "https://nrityanjaliresearchjournal.com"
+NEXT_PUBLIC_APP_URL = "https://Elsevierresearchjournal.com"
+RESEND_FROM_EMAIL = "noreply@elsevierimj.com"
+

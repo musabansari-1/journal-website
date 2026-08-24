@@ -9,7 +9,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "journal-db"
-database_id = "YOUR_JOURNAL_D1_DATABASE_ID"
+database_id = "41a202c9-b4e0-417a-a026-aab293a4a123"
 
 [[r2_buckets]]
 binding = "R2"
@@ -17,7 +17,7 @@ bucket_name = "journal-r2"
 
 [[kv_namespaces]]
 binding = "KV"
-id = "YOUR_JOURNAL_KV_NAMESPACE_ID"
+id = "7dc364e2fd484f8baca4a3ef8d8c0db2"
 
 [[queues.producers]]
 binding = "QUEUE"
@@ -30,4 +30,5 @@ max_batch_timeout = 30
 
 [vars]
 ENVIRONMENT = "production"
-NEXT_PUBLIC_APP_URL = "https://nrityanjaliresearchjournal.com"
+NEXT_PUBLIC_APP_URL = "https://eimjr.com"
+RESEND_FROM_EMAIL = "noreply@eimjr.com"
