@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+export const runtime = 'edge'
+
 const FALLBACK_CONFERENCES = [
   {
     id: 'conf-001',
