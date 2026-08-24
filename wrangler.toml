@@ -23,11 +23,6 @@ id = "YOUR_JOURNAL_KV_NAMESPACE_ID"
 binding = "QUEUE"
 queue = "journal-queue"
 
-[[queues.consumers]]
-queue = "journal-queue"
-max_batch_size = 10
-max_batch_timeout = 30
-
 [vars]
 ENVIRONMENT = "production"
 NEXT_PUBLIC_APP_URL = "https://Elsevierresearchjournal.com"
